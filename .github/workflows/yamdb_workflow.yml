@@ -56,7 +56,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          sudo docker compose pull nizzerato/yamdb_final:latest
+          sudo docker pull nizzerato/yamdb_final:latest
           sudo docker compose stop
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
