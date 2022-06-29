@@ -1,7 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
-from rest_framework import serializers
 from django.utils import timezone
-
+from rest_framework import serializers
 from reviews.models import Category, Comment, Genre, Review, Title, User
 
 CREATE_DIFFERENT_NAME = 'Создайте другое имя'

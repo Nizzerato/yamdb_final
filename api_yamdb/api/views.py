@@ -10,9 +10,10 @@ from rest_framework.permissions import (AllowAny, IsAuthenticated,
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
+from reviews.models import Category, Genre, Review, Title, User
 
 from api_yamdb.settings import EMAIL_YAMDB
-from reviews.models import Category, Genre, Review, Title, User
+
 from .filters import TitleFilter
 from .permissions import IsAdmin, IsAdminOrAuthorOrReadOnly, IsAdminOrReadOnly
 from .serializers import (CategorySerializer, CommentSerializer,
@@ -146,8 +147,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
                           IsAdminOrAuthorOrReadOnly)
 
     def get_title(self):
-        title = get_object_or_404(Title, id=self.kwargs.get('title_id'))
-        return title
+        return get_object_or_404(Title, id=self.kwargs.get('title_id'))
 
     def get_queryset(self):
         return self.get_title().reviews.all()
@@ -165,8 +165,7 @@ class CommentViewSet(viewsets.ModelViewSet):
                           IsAdminOrAuthorOrReadOnly)
 
     def get_review(self):
-        review = get_object_or_404(Review, id=self.kwargs.get('review_id'))
-        return review
+        return get_object_or_404(Review, id=self.kwargs.get('review_id'))
 
     def get_queryset(self):
         return self.get_review().comments.all()
