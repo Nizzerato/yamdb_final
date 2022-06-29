@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    build: .
+    # build: .
     image: nizzerato/yamdb_final:latest
     restart: always
     volumes:
