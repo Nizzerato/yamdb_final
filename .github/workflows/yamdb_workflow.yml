@@ -52,13 +52,13 @@ jobs:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
-        context: ./api_yamdb
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
           sudo docker pull nizzerato/yamdb_final:latest
           sudo docker compose stop
+          sudo docker-compose rm web
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
