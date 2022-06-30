@@ -4,7 +4,6 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-      - ./docker-compose.yaml:/etc/docker-compose.yaml
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
